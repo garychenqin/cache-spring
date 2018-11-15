@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://www.baidu.com/cmz/schema/cache"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:beans="http://www.springframework.org/schema/beans"
+            targetNamespace="http://www.baidu.com/cmz/schema/cache"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+    <xsd:import namespace="http://www.springframework.org/schema/beans"/>
+    <xsd:element name="annotation-driven">
+        <xsd:annotation>
+            <xsd:documentation>
+                <![CDATA[ cache annotation tags]]>
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:complexContent>
+                <xsd:extension base="beans:identifiedType">
+
+                    <xsd:attribute name="client-class" type="xsd:string" use="optional">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                <![CDATA[client-class reference tag, default 'BdrpClientImpl.class']]>
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:attribute>
+
+                    <xsd:attribute name="jvm-cache-open" type="xsd:boolean" use="optional">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                <![CDATA[jvm-cache-open reference tag, if true, first getCache from Local JVM, default false]]>
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:attribute>
+
+                    <xsd:attribute name="jvm-cache-seconds" type="xsd:int" use="optional">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                <![CDATA[jvm-cache-seconds reference tag, work only jvm-cache-open is true, default 300]]>
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:attribute>
+
+                    <xsd:attribute name="max-jvm-cache-keys" type="xsd:int" use="optional">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                <![CDATA[max-jvm-cache-keys count reference tag, work only jvm-cache-open is true, default 3000]]>
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:attribute>
+
+                    <xsd:attribute name="ref" type="xsd:string" use="required">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                <![CDATA[bdrp ref reference tag.]]>
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:attribute>
+
+                    <xsd:attribute name="key-generator-ref" type="xsd:string" use="optional">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                <![CDATA[key-generator-ref reference tag, default 'HashCodeCacheKeyGenerator.class']]>
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:attribute>
+
+                    <xsd:attribute name="global-key-prefix" type="xsd:string" use="optional">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                <![CDATA[global-key-prefix reference tag, default '']]>
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:attribute>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>
